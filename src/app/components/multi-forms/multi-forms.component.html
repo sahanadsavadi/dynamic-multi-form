@@ -1,0 +1,4 @@
+<div class="multi-forms">
+  <p *ngIf="!forms()">Loading...</p>
+  <app-dynamic-form *ngIf="forms()?.form" [formStructure]="forms()?.form"></app-dynamic-form>
+</div>

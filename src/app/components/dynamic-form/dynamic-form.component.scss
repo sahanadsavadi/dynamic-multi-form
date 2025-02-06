@@ -1,0 +1,88 @@
+$primary-color: #3f51b5;
+$secondary-color: #ff4081;
+$background-color: #f4f6f8;
+$border-radius: 8px;
+
+.form-container {
+  max-width: 500px;
+  margin: 30px auto;
+  padding: 20px;
+  background: $background-color;
+  border-radius: $border-radius;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+
+  h2 {
+    text-align: center;
+    color: $primary-color;
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+  }
+
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+
+    .mat-form-field {
+      width: 100%;
+    }
+
+    .pass-field {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+
+      .Password {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        position: relative;
+
+        mat-icon {
+          cursor: pointer;
+          color: $secondary-color;
+          margin-left: 10px;
+        }
+      }
+    }
+
+    .mat-form-field-appearance-outline .mat-form-field-outline {
+      border-color: rgba(0, 0, 0, 0.1);
+    }
+
+    .mat-form-field-appearance-outline.mat-focused .mat-form-field-outline {
+      border-color: $primary-color;
+    }
+
+    .mat-icon-button {
+      position: absolute;
+      right: 10px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: $secondary-color;
+    }
+  }
+
+  .submit {
+    background: $primary-color;
+    color: white;
+    font-size: 1rem;
+    padding: 12px;
+    border-radius: $border-radius;
+    cursor: pointer;
+    border: none;
+    transition: background 0.3s ease;
+    width: 100%;
+
+    &:hover {
+      background: darken($primary-color, 10%);
+    }
+  }
+}
+
+@media (max-width: 600px) {
+  .form-container {
+    max-width: 90%;
+    padding: 15px;
+  }
+}

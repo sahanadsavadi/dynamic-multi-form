@@ -1,0 +1,44 @@
+<div class="form-container" *ngIf="form()">
+  <h2>{{ formStructure?.title }}</h2>
+  <form *ngIf="form()" [formGroup]="form()" (ngSubmit)="submitForm()">
+    <div *ngFor="let field of formStructure?.fields">
+      <mat-form-field appearance="outline" *ngIf="field.type !== 'NEW_PASSWORD'">
+        <mat-label [matTooltip]='field.description'>{{ field.title }}</mat-label>
+        <input matInput [type]="field.type.toLowerCase()" [formControlName]="field.name">
+        <mat-error *ngIf="form()?.get(field.name)?.invalid">
+          {{ field.errorMessage }}
+        </mat-error>
+      </mat-form-field>
+      <div class="pass-fild">
+        <div calss="Password" *ngIf="field.type === 'NEW_PASSWORD'" class="">
+
+          <mat-form-field appearance="outline">
+            <mat-label>{{ field.title }}</mat-label>
+            <input matInput [type]="hide() ? 'password' : 'text'" formControlName="newPassword" />
+            <button mat-icon-button matSuffix (click)="clickEvent($event)" [attr.aria-label]="'Hide password'"
+              [attr.aria-pressed]="hide()">
+              <mat-icon>{{hide() ? 'visibility_off' : 'visibility'}}</mat-icon>
+            </button>
+            <mat-error *ngIf="form()?.get('newPassword')?.invalid">
+              {{ field.errorMessage }}
+            </mat-error>
+          </mat-form-field>
+          <mat-icon [matTooltip]="field.info">info</mat-icon>
+        </div>
+        <div class="">
+          <mat-form-field appearance="outline" *ngIf="field.type === 'NEW_PASSWORD' && field.showConfirmPassword">
+            <mat-label>Confirm Password</mat-label>
+            <input matInput type="password" formControlName="confirmPassword">
+            <mat-error *ngIf="form()?.hasError('notMatching')">
+              Passwords do not match
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+    </div>
+
+    <button class="submit"  mat-flat-button  type="submit">
+      {{ formStructure?.submitLabel }}
+    </button>
+  </form>
+</div>
