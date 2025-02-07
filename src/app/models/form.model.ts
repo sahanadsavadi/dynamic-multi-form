@@ -19,7 +19,7 @@ export interface FormField {
     fields: FormField[];
   }
   
-  export interface MultiFormResponse {
+  export interface  MultiFormResponse {
     id: string;
-    form: FormStructure[];
+    form: Partial<FormStructure[]>;
   }
