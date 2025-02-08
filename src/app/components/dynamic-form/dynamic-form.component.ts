@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, signal, effect } from '@angular/core';
+import { Component, Input, OnInit, signal } from '@angular/core';
 import {
   FormGroup,
   FormBuilder,
@@ -26,8 +26,6 @@ import { FormField } from '../../models/form.model';
     MatFormFieldModule,
     MatInputModule,
     MatButtonModule,
-    MatCheckboxModule,
-    MatSelectModule,
     MatIconModule,
     MatTooltipModule,
   ],
@@ -39,6 +37,7 @@ export class DynamicFormComponent implements OnInit {
   hide = signal(true);
   form = signal(new FormGroup({}));
   private fb = new FormBuilder();
+  
 
   ngOnInit(): void {
     if (this.formStructure) {
@@ -85,7 +84,6 @@ export class DynamicFormComponent implements OnInit {
     return null;
   }
 
-
   submitForm(): void {
     if (this.form().valid) {
       console.log('Form Submitted:', this.form().value);
@@ -97,7 +95,5 @@ export class DynamicFormComponent implements OnInit {
   showHidePassType(event: MouseEvent) {
     this.hide.set(!this.hide());
     event.stopPropagation();
- 
   }
-  
 }

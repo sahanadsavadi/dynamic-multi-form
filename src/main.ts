@@ -1,8 +1,7 @@
 import { bootstrapApplication } from '@angular/platform-browser';
 import { AppComponent } from './app/app.component';
-import { HttpClientModule, provideHttpClient } from '@angular/common/http';
-import { BrowserAnimationsModule, provideAnimations } from '@angular/platform-browser/animations';
-import { appConfig } from './app/app.config';
+import { HttpClientModule } from '@angular/common/http';
+import { BrowserAnimationsModule,  } from '@angular/platform-browser/animations';
 import { importProvidersFrom } from '@angular/core';
 
 
