@@ -1,7 +1,7 @@
 <div class="form-container" *ngIf="form()">
   <h2>{{ formStructure?.title || 'Default Title' }}</h2>
-  <form [formGroup]="form()" (ngSubmit)="submitForm()">
-    <div *ngFor="let field of formStructure?.fields">
+  <form [formGroup]="form()" (ngSubmit)="submitForm()" >
+    <div *ngFor="let field of formStructure?.fields"> 
       <mat-form-field appearance="fill" *ngIf="field.type !== 'NEW_PASSWORD'">
         <mat-label>{{ field.title || 'Default Field Title' }}</mat-label>
         <input [matTooltip]="field.description || 'No description available'" matInput [type]="field.type?.toLowerCase() || 'text'" [formControlName]="field.name">
@@ -9,7 +9,6 @@
           {{ field.errorMessage || 'This field is required' }}
         </mat-error>
       </mat-form-field>
-
       <div class="pass-fild" *ngIf="field.type === 'NEW_PASSWORD'">
         <div class="flex justify-center items-center py-2">
           <mat-form-field appearance="fill">
@@ -24,7 +23,6 @@
           </mat-form-field>
           <mat-icon class="flex justify-center items-center mb-4 mx-1" [matTooltip]="field.info || 'No additional info'">info</mat-icon>
         </div>
-
         <mat-form-field appearance="fill" *ngIf="field.showConfirmPassword">
           <mat-label>Confirm Password</mat-label>
           <input matInput type="password" formControlName="confirmPassword">

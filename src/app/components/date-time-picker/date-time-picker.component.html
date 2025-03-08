@@ -1,0 +1,16 @@
+<mat-form-field appearance="fill">
+  <mat-label>انتخاب تاریخ و زمان</mat-label>
+
+  <div class="datetime-wrapper">
+    <input matInput [matDatepicker]="datePicker" [value]="selectedDate | date:'yyyy/MM/dd'" readonly>
+    <input matInput [value]="selectedTime" readonly>
+  </div>
+    <div class="toggle-wrapper">
+      <mat-datepicker-toggle matSuffix [for]="datePicker"></mat-datepicker-toggle>
+      <mat-datepicker #datePicker (dateChange)="onDateChange($event)"></mat-datepicker>
+      <button matSuffix mat-icon-button (click)="openTimePicker()">
+        <mat-icon>access_time</mat-icon>
+      </button>
+    </div>
+    <ngx-mat-timepicker #timePicker (timeSet)="onTimeChange($event)"></ngx-mat-timepicker>
+</mat-form-field>

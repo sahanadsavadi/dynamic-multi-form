@@ -94,6 +94,6 @@ export class DynamicFormComponent implements OnInit {
 
   showHidePassType(event: MouseEvent) {
     this.hide.set(!this.hide());
-    event.stopPropagation();
+    event.stopPropagation()
   }
 }
